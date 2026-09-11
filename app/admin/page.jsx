@@ -10,9 +10,10 @@ export default function AdminDashboard() {
   async function loadBusinesses() {
     setLoading(true);
 
-    const { data, error } = await supabase
-      .from("businesses")
-      .select(`
+    const { data } = await supabase
+  .from("businesses")
+  .select("*")
+  .eq("status", "approved");
         id,
         business_name,
         description,
